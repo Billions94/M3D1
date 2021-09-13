@@ -73,21 +73,24 @@ let city = [
 let newCityArray = [];
 function displayCity(string){
     for (let i = 0; i < city.length; i++) {
-        if (city[i].name.includes(string)) {
-            newCityArray.push(city[i].name)
+        if (city[i].name.includes(string) || string.includes(string)) {
+            return true
+        } else {
+            return false
         }
     }
     return newCityArray;
 }
-console.log(displayCity('Los'))
+console.log(displayCity('Nos lork'))
 
 /* 8. Create a function to calculate and return the sum of all elements from an array with 3 elements. 
     Pass the array as a parameter. */
 let elementArray = [10, 20, 40];
 function calculateSum(array) {
     let sum = 0;
-    sum += array[0] + array[1] + array[2]
-        
+    for (let i = 0; i < array.length; i++) {
+    sum += array[i]
+    }
     return sum;
 
 }
@@ -123,8 +126,16 @@ console.log(contains(numbers, 1))
     Pass the array as parameter and return the longest string. */ 
 let arrayOfStrings = ['Elephant', 'Hippotamus', 'Rhino'];
 function findLongestString(array){
-    if (array[0])
+    let longestString = '';
+
+    array.forEach(function(word) {
+        if (word.length > longestString.length){
+            longestString = word;
+        }
+    })
+    return longestString;
 }
+console.log(findLongestString(arrayOfStrings))
 
 /* 12. Create a function to find the types of a given angle:
   1. Acute angle â‡’ between 0 and 90 degrees. Return `acute`.
@@ -135,11 +146,11 @@ function findLongestString(array){
     Pass the angle as a parameter.
 */
 function findType(angle){
-    if (angle > 0 && angle < 90){
+    if (angle < 90){
         return 'acute'
     } else if (angle === 90){
         return 'right'
-    } else if (angle > 90 && angle < 180){
+    } else if (angle < 180){
         return 'obtuse'
     } else if (angle === 180){
         return 'straight'
@@ -147,7 +158,7 @@ function findType(angle){
         return `Invalid`
     }
 }
-console.log(findType(0))
+console.log(findType(1))
 
 /* 13. Create a function to find and return the index of the greatest element of a given array of integers that you passed as a parameter. */
 function indexOfGreatest(array) {
@@ -155,11 +166,11 @@ function indexOfGreatest(array) {
         return -1;
     }
 
-    let max = arr[0];
+    let max = array[0];
     let maxIndex = 0;
 
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] > max) {
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] > max) {
             maxIndex = i;
             max = array[i];
         }
@@ -167,21 +178,66 @@ function indexOfGreatest(array) {
 
     return maxIndex;
 }
-
+console.log(indexOfGreatest(elementArray))
 /* 14. Create a function to find and return the largest **even** number from an array of integers that is passed a parameter. */
+let  evenNumberArray = [2, 4, 6, 8, 1, 3];
 
+let largestEvenNumber = 0
+function findLargestEvenNumber(array){
+    let newEvenNumberArray = []
+
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 2 === 0) {
+                newEvenNumberArray.push(array[i])
+            }
+        }
+
+        newEvenNumberArray.sort()
+        return largestEvenNumber = newEvenNumberArray[newEvenNumberArray.length-1]
+
+    }
+
+console.log(findLargestEvenNumber(evenNumberArray))
+ 
 
 /* 15. Create a function to check from two given integers (passed as parameters) if one is positive and the other is negative. 
     Return `true` if that's the case, return `false` if it's not. */
-
-
-/* 16. Create a function to create and return a new string where the first 3 characters and in lower case and the others are in upper case. 
+function checkGivenInt(int1, int2){
+    if (int1 > 0 && int2 < 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+console.log(checkGivenInt(10, -5))
+/* 16. Create a function to create and return a new string where the first 3 characters are in lower case and the others are in upper case. 
     If the string's length is less than 3, convert the whole string into uppercase. Pass the original string as a parameter. */
+    let randString = 'Le'
+
+    function converString(str){
+
+    let result = str.toUpperCase().slice(0,3) + str.slice(3)
+    if (result.length < 3){
+        result = result.toUpperCase()
+    }
+    return result
+    }
+    console.log(converString(randString))
 
 
 /* 17. Create a function to calculate the sum of two integers (passed as parameters). 
     If the sum is in the 50-80 range, return `65`, otherwise, return `80`. */
+function sumOf2Int(int1, int2){
+    let sum = int1 + int2
+    if(sum >= 50 && sum <= 80){
+        return 65
+    }else{
+        return 80
+    }
 
+}
+
+    console.log(sumOf2Int(10, 61))
 
 /* 18. Create a function to convert a number (passed as a parameter) into a string, basing yourself on this example: 
     The number has 3 as a factor â‡’ return `Diego`

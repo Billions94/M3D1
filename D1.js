@@ -219,24 +219,32 @@ console.log(indexOfGreatest(elementArray))
 /* 14. Create a function to find and return the largest **even** number from an array of integers that is passed a parameter. */
 console.log(`-------14--------`) 
 
-let  evenNumberArray = [2, 4, 6, 24, 80, 7, 14];
+let  evenNumberArray = [2, 4, 6, 24, 40, 7, 14];
 
-function findLargestEvenNumber(array){
-    let newEvenNumberArray = []
-     let largestEvenNumber = 0
-        for (let i = 0; i < array.length; i++) {
-            if (array[i] % 2 === 0) {
-                newEvenNumberArray.push(array[i])
-                console.log(newEvenNumberArray)
-            }
-        }
+// function findLargestEvenNumber(array){
+//     let newEvenNumberArray = []
+//      let largestEvenNumber = 0
+//         for (let i = 0; i < array.length; i++) {
+//             if (array[i] % 2 === 0) {
+//                 newEvenNumberArray.push(array[i])
+//                 console.log(newEvenNumberArray)
+//             }
+//         }
 
-        // Math.max.apply(null, newEvenNumberArray)
-        largestEvenNumber = Math.max.apply(null, newEvenNumberArray)
-        return largestEvenNumber
-    }
+//         // Math.max.apply(null, newEvenNumberArray)
+//         largestEvenNumber = Math.max.apply(null, newEvenNumberArray)
+//         return largestEvenNumber
+//     }
 
-console.log(findLargestEvenNumber(evenNumberArray))
+// console.log(findLargestEvenNumber(evenNumberArray))
+function largestEven(array) {
+    let evens = array.filter(number => number % 2 == 0)
+    console.log(evens)
+    let largest = Math.max.apply(null,evens) // More simplified method
+    return largest
+
+}
+console.log(largestEven(evenNumberArray))
  
 
 /* 15. Create a function to check from two given integers (passed as parameters) if one is positive and the other is negative. 
@@ -259,7 +267,7 @@ console.log(checkGivenInt(10, -5))
 
     function converString(str){
 
-    let result = str.toUpperCase().slice(0,3) + str.slice(3)
+    let result = str.toLowerCase().slice(0,3) + str.slice(3).toUpperCase()
     if (result.length < 3){
         result = result.toUpperCase()
     }
@@ -273,7 +281,7 @@ console.log(checkGivenInt(10, -5))
     console.log(`-------17--------`) 
 
 function sumOf2Int(int1, int2){
-    let sum = int1 + int2
+    let sum = (int1 + int2)
     if(sum >= 50 && sum <= 80){
         return 65
     }else{
@@ -296,30 +304,56 @@ console.log(`-------18--------`)
 function returnBasedOnFactor(num){
 
     let name = ''
+    
+    if(num % 3 === 0) {
+        name = name + "Diego"
 
-   if(num % 3 == 0){
-      return name = name + 'Diego'
-   } else if(num % 5 == 0){
-       return name = name + 'Riccardo'
-   } else if(num % 7 == 0){
-       return name = name + 'Stefano'
-   }
+        if( num % 5 ===0){
+            name = name + 'Riccardo'
+        }else if(num % 7 === 0){
+            name = name + 'Stefano'
+        }
+    }else if( num % 5 ===0 ){
+        name = name + 'Riccardo'
+         if(num % 7 === 0){
+            name = name + 'Stefano'
+        }
+    }else if(num % 7 === 0){
+        name = name + 'Stefano'
+    }else{
+        return num
+    }
+
+    return name
 
 
 }
+
+
+
 console.log(returnBasedOnFactor(105))
 
 /* 19. Create a function that that takes a phrase as a parameter and returns its acronym.
 Ex. British Broadcasting Corporation returns `BBC` */
 console.log(`-------19--------`) 
 
-function acronym(phrase){
-    let firstLetters = []
+// function acronym(phrase){
+//     let firstLetters = []
    
-   for(let i = 0; i< phrase.split(' ').length; i++){
-    firstLetters.push(phrase.split(' ')[i].slice(0,1))
-   }
+//    for(let i = 0; i< phrase.split(' ').length; i++){
+//     firstLetters.push(phrase.split(' ')[i].slice(0,1))
+//    }
    
-   return firstLetters.join('').toLocaleUpperCase()
+//    return firstLetters.join('').toLocaleUpperCase()
+// }
+// console.log(acronym('British Broadcasting Corporation '))
+function acronym(str) {
+    let words = str.split(" ")
+    console.log(words)
+    let bbc = words.map(word => word[0])
+    console.log(bbc)
+
+    return bbc.join("").toUpperCase()
 }
-console.log(acronym('British Broadcasting Corporation '))
+
+console.log(acronym("British Broadcasting Corporation")) // Another way to do the same thing

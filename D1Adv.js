@@ -14,7 +14,11 @@
 
 /* 5. Given an integer (as parameter), return an integer which digitas are the same as the original number, but reversed.
     Ex: 189 â‡’ 981 */
-
+function reversedInt(int){
+    // console.log(int.toString().split('').reverse().join(''))
+ return int.toString().split('').reverse().join('')
+} 
+console.log(reversedInt(981))
 
 /* 6. Write a function that takes a positive number X as a parameter. The function should output (as console.log) a step shaped string with X level usign the `#` character. Make sure the steps are on the right hand side:
 

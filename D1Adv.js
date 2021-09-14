@@ -34,7 +34,7 @@ function getMaxOccuringChar(string)
     }
     return result;
 }
-console.log(getMaxOccuringChar('Alex'))
+console.log(getMaxOccuringChar('Alexander'))
  
 
 /* 2. Check if two strings (passed as parameters) are anagrams of each other. 
@@ -97,7 +97,16 @@ console.log(reversedInt(981))
         '### '
         '####'
 */ 
-
+function steps(height) {
+    for (let i = 0; i < height; i ++){
+        let toPrint = ""
+        for (let j = 0; j < i + 1; j++) {
+            toPrint += "#"
+        }
+        console.log(toPrint)
+    }
+}
+steps(4)
 
 /* 7. Create a function that, given a string as a parameter, returns a new string which is the original string, but reversed: 
 "hello" â‡’ "olleh" */

@@ -3,20 +3,26 @@
 /* 2. Check if two strings (passed as parameters) are anagrams of each other. 
     Do not consider spaces or punctuation, make the whole word lower case. 
     Return `true` if the words are anagram, return `false` if they aren't. */
-
-
+function isAnagram(string1, string2) {
+    if (string1.split('').sort().join('') === string2.split('').sort().join('') ){
+        return true;
+    } else {
+        return false;
+    }
+}
+console.log(isAnagram('21','21'))
 /* 3. Given a word and a list of possible anagrams (both passed as parameters), return the correct list of anagrams: 
     Ex. "listen" is the word, ["enlist", "google", "inlets"] are the possibilities: the output should be ["enlist", "inlets"]
 */
-let list = ["enlist", "google", "inlets"];
+// let list = ["enlist", "google", "inlets"];
 
-function listPossibleAnagrams(array) {
-    let newArray = [];
-    for (let i = 0; i < array.length; i++) {
-        push.push(array[i].split('').sort().join(''))
-    }
-    newArray.reverse()
-}
+// function listPossibleAnagrams(array) {
+//     let newArray = [];
+//     for (let i = 0; i < array.length; i++) {
+//         newArray.push(array[i].split('').sort().join(''))
+//     }
+//     newArray.reverse()
+// }
 /* 4. Given a string (as parameter), return `true` if the string is a palindrome or `false` if it is not. Include spaces and punctuation. */
 
 

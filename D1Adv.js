@@ -8,7 +8,15 @@
 /* 3. Given a word and a list of possible anagrams (both passed as parameters), return the correct list of anagrams: 
     Ex. "listen" is the word, ["enlist", "google", "inlets"] are the possibilities: the output should be ["enlist", "inlets"]
 */
+let list = ["enlist", "google", "inlets"];
 
+function listPossibleAnagrams(array) {
+    let newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        push.push(array[i].split('').sort().join(''))
+    }
+    newArray.reverse()
+}
 /* 4. Given a string (as parameter), return `true` if the string is a palindrome or `false` if it is not. Include spaces and punctuation. */
 
 
@@ -40,6 +48,14 @@ console.log(reversedInt(981))
 /* 7. Create a function that, given a string as a parameter, returns a new string which is the original string, but reversed: 
 "hello" â‡’ "olleh" */
 
+function reverseString(string) {
+    let newArray = [];
+    for (let i = 0; i < string.length; i++) {
+        newArray.push(string.split('').reverse().join(''));
+    }
+    return newArray;
+}
+console.log(reverseString('hello'));
 
 /* 8. Create a function that takes an array and a "chuck size" as parameters. 
     Divide the array into subarrays with the "chunk size" as lenght: 
@@ -58,7 +74,14 @@ Example with X = 3
  '#####'
 ```
 */
-
+function tree(height){
+    for (let i = 0; i < height; i++){
+        let stars = "#".repeat(2 * i +1)
+        let spacesBefore = " ".repeat(height - i - 1)
+        console.log(spacesBefore + stars)
+    }
+}
+tree(5)
 
 
 /* 10. Write a function that accepts an integer N and returns a NxN spiral matrix:

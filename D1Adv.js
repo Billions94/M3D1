@@ -1,4 +1,41 @@
 /* 1. Given a string (as a parameter), return the character that is most commonly used. */
+let string = 'alexander'
+function getMaxOccuringChar(string)
+{
+ 
+    // Create array to keep the count of individual
+    // characters and initialize the array as 0
+    let count = new Array(string);
+    for (let i = 0; i < string; i++)
+    {
+        count[i] = 0;
+    }
+     
+
+    // Construct character count array from the input
+    // string.
+    let len = string.length;
+    for (let i = 0; i < len; i++)
+    {
+        count[string[i].charCodeAt(0)] += 1;
+    }
+    let max = -1;   // Initialize max count
+    let result = ' ';   // Initialize result
+     
+    // Traversing through the string and maintaining
+    // the count of each character
+    for (let i = 0; i < len; i++)
+    {
+        if (max < count[string[i].charCodeAt(0)])
+        {
+            max = count[string[i].charCodeAt(0)];
+            result = string[i];
+        }
+    }
+    return result;
+}
+console.log(getMaxOccuringChar('Alex'))
+ 
 
 /* 2. Check if two strings (passed as parameters) are anagrams of each other. 
     Do not consider spaces or punctuation, make the whole word lower case. 
@@ -24,7 +61,18 @@ console.log(isAnagram('21','21'))
 //     newArray.reverse()
 // }
 /* 4. Given a string (as parameter), return `true` if the string is a palindrome or `false` if it is not. Include spaces and punctuation. */
-
+function palindrome(str) {
+    // Step 1. Lowercase the string and use the RegExp to remove unwanted characters from it
+    let re = /[\W_]/g; 
+    
+    let lowRegStr = str.toLowerCase().replace(re, '');       
+    // Step 2. Use the same chaining methods with built-in functions from the previous article 'Three Ways to Reverse a String in JavaScript'
+    let reverseStr = lowRegStr.split('').reverse().join('');  
+    // Step 3. Check if reverseStr is strictly equals to lowRegStr and return a Boolean
+    return reverseStr === lowRegStr; 
+  }
+   
+  console.log(palindrome("A man, a plan, a canal. Panama"));
 
 /* 5. Given an integer (as parameter), return an integer which digitas are the same as the original number, but reversed.
     Ex: 189 â‡’ 981 */
